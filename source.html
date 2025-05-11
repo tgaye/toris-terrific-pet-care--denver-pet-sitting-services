@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tori's Terrific Pet Care | Denver Pet Sitting Services</title>
+    <link rel="icon" type="image/png" href="http://localhost:3001/output_images/maj229yp-4yoybzay/favicon-pet-care-icon_32x32.png">
+    <style>
+        :root {
+            --primary: #4a8fe7;
+            --secondary: #5bc0eb;
+            --accent: #f79256;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --success: #90be6d;
+            --mountain-blue: #2a9d8f;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--mountain-blue));
+            color: white;
+            padding: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .header-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('http://localhost:3001/output_images/maj229yp-4yoybzay/denver-mountains-silhouette_1280x720.png');
+            background-size: cover;
+            opacity: 0.2;
+            z-index: 1;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        .logo-text h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.2rem;
+        }
+
+        .logo-text p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hero {
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            background-color: #e07f45;
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            border: 2px solid white;
+            margin-left: 1rem;
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .paw-decoration {
+            position: absolute;
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .paw-1 {
+            top: 20%;
+            left: 10%;
+            transform: rotate(25deg);
+            width: 80px;
+        }
+
+        .paw-2 {
+            bottom: 15%;
+            right: 10%;
+            transform: rotate(-15deg);
+            width: 60px;
+        }
+
+        section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--primary);
+            display: inline-block;
+            padding-bottom: 0.5rem;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-img {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .service-content {
+            padding: 1.5rem;
+        }
+
+        .service-content h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .service-content p {
+            margin-bottom: 1rem;
+            color: #555;
+        }
+
+        .price {
+            font-weight: 700;
+            color: var(--accent);
+            font-size: 1.2rem;
+        }
+
+        .about {
+            background-color: var(--secondary);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('http://localhost:3001/output_images/maj229yp-4yoybzay/paw-print-pattern_1280x720.png');
+            opacity: 0.05;
+            z-index: 1;
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .about-img {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h2 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonials {
+            background-color: #f5f5f5;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-size: 5rem;
+            color: rgba(0, 0, 0, 0.05);
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+
+        .testimonial-content {
+            position: relative;
+            z-index: 1;
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .testimonial-author img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .author-info h4 {
+            margin-bottom: 0.2rem;
+            color: var(--primary);
+        }
+
+        .author-info p {
+            font-size: 0.9rem;
+            color: #777;
+        }
+
+        .service-area {
+            text-align: center;
+        }
+
+        .service-area img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin: 2rem 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact {
+            background: linear-gradient(135deg, var(--mountain-blue), var(--primary));
+            color: white;
+            text-align: center;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+        }
+
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            text-align: left;
+        }
+
+        .footer-column h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-column ul li a {
+            color: #bbb;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-column ul li a:hover {
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background-color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #bbb;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .about-content {
+                flex-direction: column;
+            }
+
+            .btn-secondary {
+                margin-left: 0;
+                margin-top: 1rem;
+            }
+        }
+
+        /* Animation */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+    </style>
+
+<base target="_self">
+
+
+    <header>
+        <div class="header-bg"></div>
+        <div class="header-content">
+            <nav>
+                <div class="logo">
+                    <img src="http://localhost:3001/output_images/maj229yp-4yoybzay/paw-print-logo_150x150.png" alt="Tori's Terrific Pet Care Logo">
+                    <div class="logo-text">
+                        <h1>Tori's Terrific Pet Care</h1>
+                        <p>Your pet's new best friend!</p>
+                    </div>
+                </div>
+                <div class="nav-links">
+                    <a href="#services">Services</a>
+                    <a href="#about">About</a>
+                    <a href="#testimonials">Testimonials</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </nav>
+            <div class="hero">
+                <img src="http://localhost:3001/output_images/maj229yp-4yoybzay/happy-woman-with-dog_800x600.png" alt="Tori with a happy dog" class="floating" style="max-height: 300px; border-radius: 50%; border: 5px solid white; margin-bottom: 2rem;">
+                <h2>Reliable Pet Care in Denver</h2>
+                <p>Trustworthy, loving care for your furry family members when you can't be there.</p>
+                <div>
+                    <a href="#contact" class="btn">Book Now</a>
+                    <a href="#services" class="btn btn-secondary">Our Services</a>
+                </div>
+            </div>
+        </div>
+        <img src="http://localhost:3001/output_images/maj229yp-4yoybzay/paw-print-outline_150x150.png" class="paw-decoration paw-1" alt="Paw decoration">
+        <img src="http://localhost:3001/output_images/maj229yp-4yoybzay/paw-print-outline_150x150.png" class="paw-decoration paw-2" alt="Paw decoration">
+    </header>
+
+    <section id="services">
+        <div class="section-title">
+            <h2>Our Services</h2>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <img src="http://localhost:3001/output_images/maj229yp-4yoybzay/dog-walking-service_800x600.png" alt="Dog walking service" class="service-img">
+                <div class="service-content">
+                    <h3>Dog Walking</h3>
+                    <p>Daily exercise for your pup, rain or shine. We know all the best dog-friendly trails in Denver!</p>
+                    <p class="price">$25 per 30-minute walk</p>
+                    <a href="#contact" class="btn">Book Now</a>
+                </div>
+            </div>
+            <div class="service-card">
+                <img src="http://localhost:3001/output_images/maj229yp-4yoybzay/pet-sitting-service_800x600.png" alt="Pet sitting service" class="service-img">
+                <div class="service-content">
+                    <h3>Pet Sitting</h3>
+                    <p>In-home visits to feed, play with, and care for your pets while you're away.</p>
+                    <p class="price">$35 per visit</p>
+                    <a href="#contact" class="btn">Book Now</a>
+                </div>
+            </div>
+            <div class="service-card">
+                <img src="http://localhost:3001/output_images/maj229yp-4yoybzay/overnight-pet-care_800x600.png" alt="Overnight pet care" class="service-img">
+                <div class="service-content">
+                    <h3>Overnight Care</h3>
+                    <p>24/7 care in your home so your pets stay comfortable in their own environment.</p>
+                    <p class="price">$75 per night</p>
+                    <a href="#contact" class="btn">Book Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="section-title">
+            <h2>About Tori</h2>
+        </div>
+        <div class="about-content">
+            <div class="about-img">
+                <img src="http://localhost:3001/output_images/maj229yp-4yoybzay/tori-with-pets_800x600.png" alt="Tori with pets">
+            </div>
+            <div class="about-text">
+                <h2>Your Trusted Pet Care Professional</h2>
+                <p>Hi, I'm Tori! I've been caring for animals my whole life and have turned my passion into a profession. As a Denver native, I understand the unique needs of pets in our mountain climate.</p>
+                <p>I'm certified in pet first aid and CPR, and have experience with all types of animals - from puppies and kittens to senior pets with special needs. Your pets' safety and happiness are my top priorities.</p>
+                <p>Every visit includes photo updates so you can see how much fun we're having while you're away!</p>
+                <a href="#testimonials" class="btn">See What Clients Say</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="testimonials">
+        <div class="section-title">
+            <h2>Happy Clients</h2>
+        </div>
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <div class="testimonial-content">
+                    <p>Tori has been walking our golden retriever for months now and we couldn't be happier. She's reliable, caring, and sends the cutest photos from their adventures!</p>
+                </div>
+                <div class="testimonial-author">
+                    <img src="http://localhost:3001/output_images/maj229yp-4yoybzay/happy-customer-1_150x150.png" alt="Sarah J.">
+                    <div class="author-info">
+                        <h4>Sarah J.</h4>
+                        <p>Highland Neighborhood</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-content">
+                    <p>We travel frequently and Tori's overnight care gives us peace of mind. Our cats actually seem disappointed when we come home now!</p>
+                </div>
+                <div class="testimonial-author">
+                    <img src="http://localhost:3001/output_images/maj229yp-4yoybzay/happy-customer-2_150x150.png" alt="Michael T.">
+                    <div class="author-info">
+                        <h4>Michael T.</h4>
+                        <p>Washington Park</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-content">
+                    <p>Tori handles our anxious rescue dog with such patience and care. She's the only sitter we trust with our special needs pup.</p>
+                </div>
+                <div class="testimonial-author">
+                    <img src="http://localhost:3001/output_images/maj229yp-4yoybzay/happy-customer-3_150x150.png" alt="Lisa &amp; David R.">
+                    <div class="author-info">
+                        <h4>Lisa &amp; David R.</h4>
+                        <p>Baker Neighborhood</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="service-area" class="service-area">
+        <div class="section-title">
+            <h2>Service Area</h2>
+        </div>
+        <p>I serve all Denver neighborhoods within 10 miles of downtown, including:</p>
+        <ul style="list-style: none; columns: 3; margin: 1rem 0;">
+            <li>• Capitol Hill</li>
+            <li>• Cherry Creek</li>
+            <li>• Highlands</li>
+            <li>• LoDo</li>
+            <li>• Park Hill</li>
+            <li>• Washington Park</li>
+            <li>• Baker</li>
+            <li>• City Park</li>
+            <li>• Congress Park</li>
+        </ul>
+        <img src="http://localhost:3001/output_images/maj229yp-4yoybzay/denver-service-area-map_800x600.png" alt="Denver service area map">
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="section-title">
+            <h2>Get In Touch</h2>
+        </div>
+        <div class="contact-form">
+            <form id="booking-form">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" required="">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required="">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+                <div class="form-group">
+                    <label for="service">Service Needed</label>
+                    <select id="service" name="service" required="">
+                        <option value="">Select a service</option>
+                        <option value="walking">Dog Walking</option>
+                        <option value="sitting">Pet Sitting</option>
+                        <option value="overnight">Overnight Care</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Tell us about your pets</label>
+                    <textarea id="message" name="message" required=""></textarea>
+                </div>
+                <button type="submit" class="btn" style="width: 100%;">Send Booking Request</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Tori's Terrific Pet Care</h3>
+                <p>Providing loving, reliable pet care services to Denver families since 2023.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-yelp"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact Info</h3>
+                <ul>
+                    <li>Denver, CO</li>
+                    <li>(720) 555-1234</li>
+                    <li>tori@terrificpetcare.com</li>
+                    <li>Available 7am-9pm daily</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>© 2025 Tori's Terrific Pet Care. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Form submission handling
+        const bookingForm = document.getElementById('booking-form');
+        if (bookingForm) {
+            bookingForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thank you for your booking request! Tori will contact you within 24 hours to confirm your appointment.');
+                this.reset();
+            });
+        }
+
+        // Add Font Awesome icons
+        const faScript = document.createElement('script');
+        faScript.src = 'https://kit.fontawesome.com/a076d05399.js';
+        faScript.crossOrigin = 'anonymous';
+        document.body.appendChild(faScript);
+    </script><script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+              
+          
+                
+          
+              
